@@ -12,6 +12,7 @@ services:
     command: /bin/sh -c "npm i && npm run serve"
     networks:
       - swarm
+      - host
 networks:
   swarm:
     driver: "bridge"
