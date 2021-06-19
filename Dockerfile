@@ -12,6 +12,6 @@ COPY . .
 FROM develop-stage as build-stage
 ARG tag=unknown
 ENV BUILD_TAG_ID ${tag}
-RUN npm run serve
+RUN npm run build
 
 EXPOSE 8080
