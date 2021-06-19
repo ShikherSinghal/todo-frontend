@@ -1,0 +1,19 @@
+# for local development
+version: '3.7'
+services:
+  todo:
+    container_name: todo-frontend
+    image: node:14.15.0
+    working_dir: /app
+    ports:
+      - '8080:8080'
+    volumes:
+      - '.:/app'
+    command: /bin/sh -c "npm i && npm run serve"
+    networks:
+      - swarm
+networks:
+  swarm:
+    driver: "bridge"
+    name: "swarm"
+
