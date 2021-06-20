@@ -1,6 +1,6 @@
 NAME		:= shikher1/experimental
 TAG         := $$(echo $$(git describe --dirty --abbrev=7 --tags --always --first-parent --long))
-IMG			:= ${NAME}:${TAG}FRONTEND
+IMG			:= ${NAME}:FRONTEND
 EXPERIMENTAL:= ${NAME}:experimental
 LATEST		:= ${NAME}:latest
 
