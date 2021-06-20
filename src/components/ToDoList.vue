@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li :key="toDo" v-for="toDo in toDoList">
+      <li :key="toDo" v-for="toDo in list">
         {{toDo}}
       </li>
     </ul>
@@ -9,6 +9,7 @@
 </template>
 <script>
 export default {
+  props:['list'],
   data() {
     return {
       toDoList:[1,2,3,4]

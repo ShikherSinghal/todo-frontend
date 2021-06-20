@@ -1,7 +1,7 @@
 <template>
   <div>
     Welcome to To Do App!
-    <ToDoList />
+    <ToDoList :list="list"/>
     <div>
       <input v-model="text" />
       <button @click="handleAdd">Add</button>
@@ -11,25 +11,36 @@
 
 <script>
 import ToDoList from "./components/ToDoList.vue";
+import axios from 'axios'
 
 export default {
   name: "App",
   data() {
     return {
       text: "",
+      list :[],
     };
+  },
+  mounted() {
+    this.fetchList()
   },
   components: {
     ToDoList,
   },
   methods: {
+    fetchList(){
+      const url = "http://localhost:8000/api/todo/get_list";
+      axios.get(url).then((response) => {
+        this.list = response.data;
+      });
+    },
     handleAdd() {
-      const url = "http://192.168.68.59:8000/api/todo/get_list";
-      this.axios.get(url).then((response) => {
+      const url = "http://localhost:8000/api/todo/add_todo/";
+      const payload = {title:this.text}
+      axios.post(url,payload).then((response) => {
         console.log(response.data);
       });
-
-      console.log(this.text);
+      this.fetchList()
     },
   },
 };
